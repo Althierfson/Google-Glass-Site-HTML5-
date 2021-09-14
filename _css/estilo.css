@@ -242,3 +242,21 @@ footer#rodape {
 footer#rodape p {
     text-align: center;
 }
+
+/* Medias */
+
+video#video-direita {
+    display: block;
+    position: relative;
+    left: 50px;
+    top: 0px;
+    width: 440px;
+}
+
+section#corpo article div video#video-esquerda {
+    display: block;
+    position: relative;
+    left: 70px;
+    bottom: 10px;
+    width: 640px;
+}
