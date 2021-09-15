@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="_css/estilo.css">
     <link rel="stylesheet" href="_css/form.css">
     <script language="javascript" src="_javascript/funcoes.js"></script>
+    <script>
+        function calc_total() {
+            var qtd = parseInt(document.getElementById('cQtd').value);
+            tot = qtd * 1500;
+            document.getElementById('cTot').value = tot;
+        }
+    </script>
 </head>
 
 <body>
@@ -50,11 +57,13 @@
             </header>
         </article>
 
-        <form>
+        <form method="POST" id="fContato" action="mailto:contato@contato.com" oninput="calc_total();">
             <fieldset id="usuario">
                 <legend>Identificação do Usuário</legend>
-                <p>Nome: <input type="text" name="tNome" id="cNome" size="20" maxlength="30" placeholder="Nome completo"></p>
-                <p>Senha: <input type="password" name="tSenha" id="cNome" size="8" maxlength="8" placeholder="8 Digitos"></p>
+                <p>Nome: <input type="text" name="tNome" id="cNome" size="20" maxlength="30"
+                        placeholder="Nome completo"></p>
+                <p>Senha: <input type="password" name="tSenha" id="cNome" size="8" maxlength="8"
+                        placeholder="8 Digitos"></p>
                 <p>E-mail: <input type="email" name="tEmail" id="cEmail" size="20" maxlength="40"></p>
                 <fieldset id="sexo">
                     <legend>Sexo:</legend>
@@ -62,34 +71,50 @@
                     <input type="radio" name="tSexo" id="cFem"> <label for="cFem">Feminino</label>
                 </fieldset>
                 <p>Data de Nascimento: <input type="date" name="tNasc" id="cNasc"></p>
-
-
-
-
             </fieldset>
             <fieldset id="endereco">
                 <legend>Endereço do Usuário</legend>
 
-                <p>Logradouro: <input type="text" name="cRua" id="cRua" size="13" maxlength="80" placeholder="Rua, AV, Travessa"></p>
+                <p>Logradouro: <input type="text" name="cRua" id="cRua" size="13" maxlength="80"
+                        placeholder="Rua, AV, Travessa"></p>
                 <p>Número: <input type="number" name="tNum" id="cNum" min="0" max="99999"></p>
-                Estado:
-                Cidade:
-            </fieldset id="mensagem">
-            <legend>Mensagem do Usuário</legend>
+                <p>Estado: <select name="tEst" id="cEst">
+                        <optgroup label="Grupo 1">
+                            <option value="PI">piauí</option>
+                            <option value="PA">Paraiba</option>
+                        </optgroup>
+                        <optgroup label="Grupo 2">
+                            <option value="RN" selected>Rio Grande no Norte</option>
+                            <option value="PE">Pernabuco</option>
+                        </optgroup>
+                    </select></p>
+                <p>Cidade: <input type="text" name="tCid" id="cCid" size="20" maxlength="30" placeholder="Cidade"
+                        list="cidades"></p>
+                <datalist id="cidades">
+                    <option value="Natal"></option>
+                    <option value="Parelhas"></option>
+                    <option value="Recife"></option>
+                    <option value="Juazeiro"></option>
+                </datalist>
+            </fieldset>
+            <fieldset id="mensagem">
+                <legend>Mensagem do Usuário</legend>
 
-            Grau de Urgência:
-            Mensagem:
+                <p>Grau de Urgência: Min<input type="range" name="tUrg" id="cUrg" min="0" max="10" step="2">Max</p>
+                <p>Mensagem: <textarea name="tMsg" id="cMsg" cols="45" rows="5"
+                        placeholder="Digite aquie sua Menssagem"></textarea> </p>
+            </fieldset>
             <fieldset id="pedido">
                 <legend>Quero um Google Glass</legend>
 
-                Gostaria de adquirir um Google Glass quando disponível
-                Cor:
-                Quantidade:
-                Preço Total: R$
+                <p><input type="checkbox" name="tPed" id="cPed" checked>Gostaria de adquirir um Google Glass quando
+                    disponível</p>
+                <p>Cor: <input type="color" name="tCor" id="cCor" value="#0000FF"></p>
+                <p>Quantidade: <input type="number" name="tQts" id="cQtd" min="0" max="5" value="0"></p>
+                <p>Preço Total: R$ <input type="text" name="tTot" id="cTot" placeholder="Total a Pagar" readonly></p>
             </fieldset>
 
-            [BOTÃO ENVIAR]
-
+            <input type="image" src="_imagens/botao-enviar.png" name="tEnviar" id="cEnviar">
         </form>
 
         <footer id="rodape">
